@@ -4,6 +4,8 @@
  */
 package project_akhir_pbo;
 
+import project_akhir_pbo.controllers.MainController;
+
 /**
  *
  * @author Hp
@@ -15,6 +17,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new MainController();
     }
     
 }
