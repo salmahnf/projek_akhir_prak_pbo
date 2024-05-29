@@ -133,6 +133,39 @@ public class DBHelper {
         return value;
     }
     
+    public boolean updateAnggota(String id, String nama, String umur) {
+        boolean value = false;
+        
+        query = "UPDATE anggota SET nama = \"" + nama + "\", umur = " + umur + " WHERE anggota_id =\"" + id + "\"";
+        try {
+            stmt = conn.createStatement();
+            if (stmt.executeUpdate(query) > 0) {
+                value = true;
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+    
+    public boolean deleteAnggota(String id) {
+        boolean value = false;
+        query = "DELETE FROM anggota WHERE anggota_id =\"" + id + "\"";
+        try {
+            stmt = conn.createStatement();
+            if (stmt.executeUpdate(query) > 0) {
+                value = true;
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+
+    
     
     
 }

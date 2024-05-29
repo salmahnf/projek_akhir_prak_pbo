@@ -55,4 +55,39 @@ public class PesertaMainController {
         });
     }
     
+    public void updateData(int row, String nama, String umur) {
+        if (row != -1) {
+            String id = model.getValueAt(row, 0).toString(); 
+            DBHelper helper = new DBHelper();
+            if (helper.updateAnggota(id, nama, umur)) {
+      JOptionPane.showMessageDialog(v, "berhasil diupdate", "Success", JOptionPane.INFORMATION_MESSAGE);
+                refreshTable();
+            } else {
+                JOptionPane.showMessageDialog(v, "gagal mengupdate data", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(v, "tidak ada data yg dipilih", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void deleteData(int row) {
+        if (row != -1) {
+            String id = model.getValueAt(row, 0).toString(); 
+            DBHelper helper = new DBHelper();
+            if (helper.deleteAnggota(id)) {
+                JOptionPane.showMessageDialog(v, "berhasil dihapus", "Success", JOptionPane.INFORMATION_MESSAGE);
+                refreshTable();
+            } else {
+                JOptionPane.showMessageDialog(v, "gagal menghapus data!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(v, "Tidak ada data yg dipilih", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void logOut(){
+        v.dispose();
+        TempKelompok.id = "";
+    }
+    
 }
