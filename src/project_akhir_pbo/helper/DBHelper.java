@@ -7,7 +7,7 @@ package project_akhir_pbo.helper;
 import java.sql.*;
 import java.util.*;
 import project_akhir_pbo.models.AnggotaModel;
-import project_akhir_pbo.models.TempKelompok;
+import project_akhir_pbo.models.TempData;
 
 /**
  *
@@ -41,7 +41,7 @@ public class DBHelper {
             rs = stmt.executeQuery(query);
             if(rs.next()){
                 value = true;
-                TempKelompok.id = rs.getString("kelompok_id");
+                TempData.kelompokID = rs.getString("kelompok_id");
             }
             stmt.close();
         } catch (SQLException e) {
@@ -164,6 +164,23 @@ public class DBHelper {
         return value;
     }
 
+    //admin
+    
+    public boolean checkAdminLogin(String user, String pass){
+        boolean value = false;
+        query = "SELECT * FROM admin WHERE user ='" + user + "' AND pass ='" + pass + "'";
+        try{
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            if(rs.next()){
+                value = true;
+            }
+            stmt.close();
+        }   catch(SQLException e){
+            e.printStackTrace();
+        }
+        return value;
+    }
 
     
     

@@ -23,16 +23,21 @@ public class PesertaLoginController {
     
     public void loginProcess(String name, String pass){
         DBHelper helper = new DBHelper();
-        if(helper.checkPesertaLogin(name, pass)){
-            new PesertaMainController();
-        }else{
+    
+            
             if (name.isEmpty() && pass.isEmpty()) {
                 JOptionPane.showMessageDialog(v, "Username dan password tidak boleh kosong", "Login Error", JOptionPane.ERROR_MESSAGE);
             } else if (name.isEmpty()) {
                 JOptionPane.showMessageDialog(v, "Username tidak boleh kosong", "Login Error", JOptionPane.ERROR_MESSAGE);
             } else if (pass.isEmpty()) {
                 JOptionPane.showMessageDialog(v, "Password tidak boleh kosong", "Login Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+            } 
+            
+            else {
+                    if(helper.checkPesertaLogin(name, pass)){
+                        new PesertaMainController();
+                    }
+else {
                 JOptionPane.showMessageDialog(v, "Login gagal, username atau password salah", "Login Error", JOptionPane.ERROR_MESSAGE);
             }
         }

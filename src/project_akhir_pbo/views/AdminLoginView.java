@@ -104,7 +104,8 @@ public class AdminLoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginAdminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginAdminButtonMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        c.loginProccess(namaField.getText(), passField.getText());
     }//GEN-LAST:event_loginAdminButtonMouseClicked
 
     private void namaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaFieldActionPerformed
